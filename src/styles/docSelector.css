@@ -1,0 +1,483 @@
+.selectTop input,
+select {
+  font-family: "fat-text";
+  font-weight: 600;
+  border-radius: 8px;
+  width: 30%;
+  margin: 1% 4%;
+  outline: none;
+  border: 0;
+  padding: 8px;
+  font-size: 16px;
+  box-shadow: 1px 1px 1cqw rgb(85, 85, 85);
+}
+a:link {
+  color: rgb(0, 0, 0);
+}
+a:visited {
+  color: rgb(0, 0, 0);
+}
+#prev {
+  position: absolute;
+  left: 20px;
+  top: 100px;
+  transform: rotate(180deg);
+  z-index: 3;
+  opacity: 0.8;
+  width: 50px;
+  cursor: pointer;
+}
+#prev:hover {
+  width: 55px;
+  opacity: 1;
+}
+.docSelectTop {
+  width: 80%;
+  display: flex;
+  position: absolute;
+  top: 130px;
+}
+
+.selectbottom {
+  box-shadow: 0 0 5px 5px rgb(144, 140, 140);
+  min-width: 1200px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(to top left, #e3dede, #f3f3f3);
+  display: flex;
+}
+
+.selectbottomLeft {
+  min-width: 200px;
+  white-space: nowrap;
+  background-color: #dcdcdc;
+  flex-grow: 1;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  font-size: 22px;
+}
+
+.selectbottomLeft > div {
+  display: flex;
+  margin: 15px 10px;
+}
+
+.selectbottomLeft input {
+  margin-left: auto;
+  transform: scale(1);
+}
+.selectbottomRight {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 8;
+  overflow: scroll;
+  padding-bottom: 20%;
+}
+
+.docHospInfo {
+  margin: 20px 20px;
+  border: 3px solid #0089a7;
+  border-radius: 20px;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 10px;
+  transition: padding-bottom 1s ease; /* 設定過渡效果和時間 */
+}
+.selectbottomRight::-webkit-scrollbar {
+  display: none;
+}
+
+.docHospInfo:hover {
+  padding-bottom: 15px;
+  transition-delay: 1s; /* 設定過渡效果延遲時間 */
+}
+.docHospInfoTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+.docHospInfoTop div {
+  margin: 10px 15px;
+}
+
+.docHospInfoTop button {
+  border: none;
+  background-color: #0089a7;
+  color: #ffff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.docHospInfoTop button:hover {
+  background-color: rgba(0, 137, 167, 0.8);
+}
+#docHospInfoSeeMore {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  opacity: 0.3;
+}
+#docHospInfoSeeMore:hover {
+  opacity: 0.6;
+}
+#docHospInfoSeeMore img {
+  position: relative;
+  left: 50%;
+  top: 15px;
+  transform: translate(-50%, -50%);
+}
+.rotated {
+  transform: rotate(180deg);
+}
+
+.docHospInfo:hover #docHospInfoSeeMore {
+  display: flex;
+}
+.docHospInfoBottom {
+  position: relative;
+  right: 20px;
+  margin: 20px;
+  /* display: none;
+  opacity: 0; */
+  justify-content: space-around;
+  transition: opacity 2s ease;
+}
+.docHospInfoBottom.show {
+  opacity: 1;
+}
+
+.docHospInfoBottom div {
+  display: flex;
+  align-items: center;
+}
+
+.hosName {
+  font-size: 30px;
+}
+
+.hos24hr {
+  color: #ffff;
+  background-color: #ea9292;
+  padding: 8px;
+  border-radius: 10px;
+  margin-right: 80px;
+}
+.selectbottomLeft24hour {
+  color: #ffff;
+  font-size: 20px;
+  background-color: #ea9292;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.docHospInfoBottom div span {
+  font-size: 22px;
+  padding: 20px;
+}
+
+.docHospInfoBottom img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.docHospInfoBottom hr {
+  height: 50px;
+  opacity: 0.4;
+}
+
+.docHospInfoBottom input {
+  transform: scale(1);
+}
+.rightNow {
+  position: relative;
+  top: 10px;
+  width: 180px;
+  font-size: 30px;
+}
+#docConfirm {
+  position: relative;
+  margin-left: 70px;
+  top: 10px;
+  height: 43px;
+  width: 180px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+#docConfirm:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+.doctorInfo {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+.doctorInfo input[type="checkbox"] {
+  position: absolute;
+  right: 50px;
+  transform: scale(2.5);
+}
+.selectbottomLeft input[type="checkbox"] {
+  transform: scale(1.5);
+}
+.doctorInfo input[type="radio"] {
+  position: absolute;
+  right: 50px;
+  transform: scale(2.5);
+}
+
+@media (max-width: 768px) {
+  .selectTop input,
+  select {
+    font-family: "fat-text";
+    font-weight: 600;
+    border-radius: 8px;
+    width: 30%;
+    margin: 1% 2%;
+    min-width: 100px;
+    outline: none;
+    border: 0;
+    padding: 8px;
+    font-size: 16px;
+    box-shadow: 1px 1px 1cqw rgb(85, 85, 85);
+  }
+  a:link {
+    color: rgb(0, 0, 0);
+  }
+  a:visited {
+    color: rgb(0, 0, 0);
+  }
+  #prev {
+    position: absolute;
+    left: 20px;
+    top: 100px;
+    transform: rotate(180deg);
+    z-index: 3;
+    opacity: 0.8;
+    width: 50px;
+    cursor: pointer;
+  }
+  #prev:hover {
+    width: 55px;
+    opacity: 1;
+  }
+  .docSelectTop {
+    width: 80%;
+    display: flex;
+    position: absolute;
+    top: 160px;
+  }
+
+  .selectbottom {
+    box-shadow: 0 0 5px 5px rgb(144, 140, 140);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(to top left, #e3dede, #f3f3f3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .selectbottomLeft {
+    min-width: 200px;
+    white-space: nowrap;
+    background-color: #dcdcdc;
+    flex-grow: 1;
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 22px;
+  }
+
+  .selectbottomLeft > div {
+    display: flex;
+    margin: 0 25px;
+    position: relative;
+    left: 22%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selectbottomLeft div > span {
+    margin: 0 20px;
+    font-size: 16px;
+  }
+
+  .selectbottomLeft input {
+    margin-left: auto;
+    transform: scale(1.2);
+  }
+
+  .selectbottomRight {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 8;
+    overflow: scroll;
+    padding-bottom: 20%;
+    position: relative;
+    left: 22%;
+    width: 55%;
+  }
+
+  .selectbottomRight::-webkit-scrollbar {
+    display: none;
+  }
+
+  .docHospInfo {
+    margin: 10px 10px;
+    border: 3px solid #0089a7;
+    border-radius: 20px;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 10px;
+    transition: padding-bottom 1s ease;
+  }
+
+  .docHospInfo:hover {
+    padding-bottom: 15px;
+    transition-delay: 1s;
+  }
+
+  .docHospInfoTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .docHospInfoTop div {
+    margin: 10px 8px;
+  }
+
+  .docHospInfoTop button {
+    border: none;
+    background-color: #0089a7;
+    color: #fff;
+    padding: 6px;
+    width: 20%;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+
+  .docHospInfoTop button:hover {
+    background-color: rgba(0, 137, 167, 0.8);
+  }
+  #docHospInfoSeeMore {
+    display: none;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.3;
+  }
+  #docHospInfoSeeMore:hover {
+    opacity: 0.6;
+  }
+  #docHospInfoSeeMore img {
+    position: relative;
+    left: 50%;
+    top: 15px;
+    transform: translate(-50%, -50%);
+  }
+  .rotated {
+    transform: rotate(180deg);
+  }
+
+  .docHospInfo:hover #docHospInfoSeeMore {
+    display: flex;
+  }
+  .docHospInfoBottom {
+    position: relative;
+    right: 20px;
+    margin: 20px;
+    display: none;
+    opacity: 0;
+    justify-content: space-around;
+    transition: opacity 2s ease;
+  }
+  .docHospInfoBottom.show {
+    opacity: 1;
+  }
+
+  .docHospInfoBottom div {
+    display: flex;
+    align-items: center;
+  }
+
+  .hosName {
+    font-size: 22px;
+  }
+
+  .hos24hr {
+    color: #ffff;
+    background-color: #ea9292;
+    padding: 6px;
+    font-size: 10px;
+    border-radius: 10px;
+    margin-right: 80px;
+  }
+  .selectbottomLeft24hour {
+    color: #ffff;
+    font-size: 10px;
+    background-color: #ea9292;
+    padding: 4px 4px;
+    border-radius: 5px;
+  }
+
+  .docHospInfoBottom div span {
+    font-size: 12px;
+    padding: 20px;
+  }
+
+  .docHospInfoBottom img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+
+  .docHospInfoBottom hr {
+    height: 50px;
+    opacity: 0.4;
+  }
+
+  .docHospInfoBottom input {
+    transform: scale(1.3);
+  }
+  .rightNow {
+    position: relative;
+    top: 10px;
+    width: 180px;
+    font-size: 30px;
+  }
+  #prev {
+    position: absolute;
+    left: 16px;
+    top: 80px;
+    transform: rotate(180deg);
+    z-index: 3;
+    opacity: 0.8;
+    width: 36px;
+    cursor: pointer;
+  }
+  #prev:hover {
+    width: 38px;
+    opacity: 1;
+  }
+}
