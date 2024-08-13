@@ -1,31 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./styles/AppointmentConfirmation.css";
 
 const AppointmentConfirmation = () => {
-  const { appointmentId } = useParams();
-  const [appointmentDetails, setAppointmentDetails] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { clinicName, doctorName, petName, appointmentDate, appointmentTime } =
+    location.state || {};
 
-  useEffect(() => {
-    // 從後端獲取預約詳情
-    fetch(`/appointment/${appointmentId}`)
-      .then((response) => response.json())
-      .then((data) => setAppointmentDetails(data))
-      .catch((error) => console.error("Error:", error));
-  }, [appointmentId]);
+  const handleReturn = () => {
+    navigate("/info");
+  };
 
-  if (!appointmentDetails) {
-    return <div>Loading...</div>;
+  if (!clinicName || !doctorName || !petName) {
+    return (
+      <div className="appointment-confirmation">
+        預約信息不完整，請重新預約。
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="appointment-confirmation">
       <h1>預約確認</h1>
-      <p>預約 ID: {appointmentId}</p>
-      <p>診所: {appointmentDetails.clinicName}</p>
-      <p>醫生: {appointmentDetails.doctorName}</p>
-      <p>日期: {appointmentDetails.appointmentDate}</p>
-      <p>時間: {appointmentDetails.appointmentTime}</p>
-      {/* 添加更多預約詳情 */}
+      <div className="appointment-details">
+        <p>
+          <strong>寵物名稱:</strong> {petName}
+        </p>
+        <p>
+          <strong>診所名稱:</strong> {clinicName}
+        </p>
+        <p>
+          <strong>醫生名稱:</strong> {doctorName}
+        </p>
+        <p>
+          <strong>預約日期:</strong> {appointmentDate}
+        </p>
+        <p>
+          <strong>預約時間:</strong> {appointmentTime}
+        </p>
+      </div>
+      <button className="return-button" onClick={handleReturn}>
+        確認
+      </button>
     </div>
   );
 };

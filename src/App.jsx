@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import DocSelector from "./DocSelector";
+import PetSelector from "./PetSelector";
+import Info from "./info/Info";
 import AppointmentConfirmation from "./AppointmentConfirmation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -18,15 +20,29 @@ function Layout({ children }) {
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<DocSelector />} />
-          <Route
-            path="/appointment-confirmation/:appointmentId"
-            element={<AppointmentConfirmation />}
-          />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <DocSelector />
+            </Layout>
+          }
+        />
+        <Route
+          path="/info"
+          element={
+            <Layout>
+              <Info />
+            </Layout>
+          }
+        />
+        <Route path="/pet-selector" element={<PetSelector />} />
+        <Route
+          path="/appointment-confirmation"
+          element={<AppointmentConfirmation />}
+        />
+      </Routes>
     </Router>
   );
 }

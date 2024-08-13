@@ -1,0 +1,95 @@
+#page3 {
+	display: flex;
+	flex-direction: column;
+}
+
+#page3TopTitle {
+	position: absolute;
+	top: 16%;
+	font-size: 30px;
+}
+
+#page3TopText {
+	letter-spacing: 3px;
+	position: absolute;
+	top: 22%;
+	line-height: 24px;
+	text-align: center;
+	width: 80%;
+	font-size: 20px;
+	min-width: 768px;
+}
+
+#commonPage {
+	background: linear-gradient(to top left, #0089a7, #6cabb9);
+	min-width: 768px;
+	width: 85%;
+	height: auto;
+	display: flex;
+	position: absolute;
+	bottom: 7%;
+	border-radius: 20px;
+}
+
+.common {
+	text-align: center;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+}
+
+.commonIcon {
+	width: 40%;
+	margin: 30px auto;
+}
+
+.commonText {
+	white-space: wrap;
+	font-size: 24px;
+	margin: 18px;
+	line-height: 28px;
+	letter-spacing: 4px;
+	font-weight: 600;
+	color: #ffffff;
+	line-clamp: 2;
+}
+
+.unit {
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+	justify-content: center;
+}
+
+.unit p {
+	color: #ffffff;
+	font-size: 26px;
+	margin: 10px 5px;
+}
+
+.commonNumber {
+	font-weight: bold;
+}
+
+.unitText {
+	font-weight: normal;
+}
+
+.commonButton {
+	cursor: pointer;
+	box-shadow: 1px 1px 15px rgb(146, 131, 131);
+	font-weight: 700;
+	font-size: 20px;
+	border-radius: 10px;
+	width: 120px;
+	height: 40px;
+	border: none;
+	color: #ffffff;
+	background-color: rgb(234, 146, 146);
+	padding: 10px;
+	margin: 30px auto;
+}
+
+.commonButton:hover {
+	opacity: 0.85;
+}

@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "all-text";
+  src: url(../styles/jf2.2四分糖.otf);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "all-text";
+}
+
+.info-wrapper {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.container > div {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.dots-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+/* 隱藏滾動條 */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* 導航點樣式 */
+.dots-nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 5px 0;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: rgb(54, 54, 54);
+}

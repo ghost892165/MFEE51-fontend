@@ -145,29 +145,85 @@ const DocSelector = () => {
     );
   };
 
-  const handleAppointment = (clinicId) => {
-    if (selectedDoctor && selectedDoctor.clinicId === clinicId) {
-      const clinic = clinics.find((c) => c.clinic_id === clinicId);
-      const doctor = clinic.doctors[selectedDoctor.doctorIndex];
-      navigate("/pet-selector", {
-        state: {
-          clinicId,
-          doctorId: doctor.id,
-          clinicName: clinic.clinic_name,
-          doctorName: doctor.name,
-          appointmentDate: searchParams.day,
-          appointmentTime: searchParams.time,
-        },
-      });
-    } else {
+  const handleAppointment = async (clinicId) => {
+    console.log("handleAppointment called with clinicId:", clinicId);
+    console.log("Current selectedDoctor:", selectedDoctor);
+    console.log("Current clinics:", clinics);
+
+    if (!selectedDoctor || selectedDoctor.clinicId !== clinicId) {
       alert("請先選擇一位醫生");
+      return;
+    }
+
+    const clinic = clinics.find((c) => c.clinic_id === clinicId);
+    if (!clinic) {
+      console.error("Selected clinic not found");
+      alert("選擇的診所資訊不存在，請重新選擇");
+      return;
+    }
+
+    console.log("Found clinic:", clinic);
+
+    if (!clinic.doctors || clinic.doctors.length === 0) {
+      console.error("No doctors found for the selected clinic");
+      alert("選擇的診所沒有醫生資訊，請重新選擇");
+      return;
+    }
+
+    const doctor = clinic.doctors[selectedDoctor.doctorIndex];
+    console.log("Selected doctor:", doctor);
+
+    if (!doctor || !doctor.id) {
+      console.error("Selected doctor not found or doctor id is missing");
+      alert("選擇的醫生資訊不完整，請重新選擇");
+      return;
+    }
+
+    const doctorId = doctor.id;
+    const appointmentDate = searchParams.day;
+    const appointmentTime = searchParams.time;
+    const petId = "1"; // 確保這是一個有效的寵物ID
+
+    console.log("Sending appointment data:", {
+      clinicId,
+      doctorId,
+      appointmentDate,
+      appointmentTime,
+      petId,
+    });
+
+    try {
+      const response = await fetch("/create-appointment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clinicId,
+          doctorId,
+          appointmentDate,
+          appointmentTime,
+          petId,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.details || "Failed to create appointment");
+      }
+
+      const data = await response.json();
+      navigate(`/appointment-confirmation/${data.appointmentId}`);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("預約失敗，請稍後再試。錯誤詳情：" + error.message);
     }
   };
 
   return (
     <div className="container">
       <div className="page">
-        <a href="../info">
+        <a href="../home.html">
           <img
             id="prev"
             src="https://img.icons8.com/flat-round/64/arrow--v1.png"
@@ -175,7 +231,7 @@ const DocSelector = () => {
           />
         </a>
 
-        <video muted loop src="/imgs/dog.mp4"></video>
+        <video muted loop autoPlay src="/imgs/dog.mp4"></video>
         <div className="selectTop docSelectTop">
           <input
             id="docDate"
@@ -215,6 +271,7 @@ const DocSelector = () => {
             <option value="21:00:00">21:00 ~ 22:00</option>
             <option value="22:00:00">22:00 ~ 23:00</option>
             <option value="23:00:00">23:00 ~ 24:00</option>
+            {/* 其他時間選項 */}
           </select>
           <select
             name="location"
@@ -243,6 +300,7 @@ const DocSelector = () => {
             <option value="18">花蓮縣</option>
             <option value="19">台東縣</option>
             <option value="20">澎湖縣</option>
+            {/* 其他地區選項 */}
           </select>
           <select
             name="subId"
@@ -258,6 +316,7 @@ const DocSelector = () => {
             <option value="5">骨科</option>
             <option value="6">外科</option>
             <option value="7">神經內科</option>
+            {/* 其他專科選項 */}
           </select>
           <button id="docConfirm" onClick={handleSearch}>
             查詢
@@ -311,6 +370,7 @@ const DocSelector = () => {
                   <div className="docHospInfoTop">
                     <div className="hosName">{clinic.clinic_name}</div>
                     <div className="hosAddress">{clinic.clinic_address}</div>
+                    {/* <div className="hosInsurance">醫療|健保</div> */}
                     <div
                       className="hos24hr"
                       style={{

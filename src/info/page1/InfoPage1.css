@@ -1,0 +1,136 @@
+/* 容器和頁面基本樣式 */
+.container {
+	height: 100%;
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+}
+
+.page {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	scroll-snap-align: start;
+	position: relative;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+
+/* 首頁特定樣式 */
+#page1 {
+	flex-direction: column;
+}
+
+.page video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.5;
+	z-index: -1;
+}
+
+/* 文字部分樣式 */
+.sectionText {
+	font-size: 22px;
+	line-height: 30px;
+	letter-spacing: 2px;
+	text-align: center;
+	margin: 0 15%;
+	min-width: 600px;
+}
+
+.sectionText h2 {
+	font-size: 32px;
+	margin: 20px 0 30px;
+}
+
+/* 選擇區域樣式 */
+.homeSelect {
+	position: relative;
+	min-width: 600px;
+	min-height: 300px;
+	top: 50px;
+	width: 80%;
+	height: 45%;
+	background: linear-gradient(to top left, #0089a7, #6cabb9);
+	border-radius: 20px;
+}
+
+.selectTop {
+	display: flex;
+	text-align: center;
+	padding: 0px 20px;
+	margin: 10px;
+}
+
+.selectTop div {
+	cursor: pointer;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+.selectTop div:hover,
+.changeColor {
+	background-color: #07738b;
+	border-radius: 20px;
+}
+
+.selectTop hr {
+	position: relative;
+	top: 20px;
+	height: 100px;
+}
+
+.selectTop div img {
+	padding: 20px 10px;
+	width: 50%;
+}
+
+.selectTop div p {
+	color: white;
+	font-size: 28px;
+	margin-top: 20px;
+	padding: 10px;
+	font-weight: 600;
+	letter-spacing: 7px;
+}
+
+/* 底部選擇區域樣式 */
+.selectBottom {
+	justify-content: center;
+	margin: 20px auto;
+	display: none;
+}
+
+.selectBottom.display {
+	display: flex;
+}
+
+.selectBottom input,
+.selectBottom select {
+	font-family: "fat-text";
+	font-weight: 600;
+	border-radius: 8px;
+	width: 180px;
+	margin: 1% 4%;
+	outline: none;
+	border: 0;
+	padding: 8px;
+	font-size: 16px;
+	box-shadow: 1px 1px 1cqw rgb(85, 85, 85);
+}
+
+.selectBottom input[type="submit"] {
+	width: 80px;
+	margin-left: 80px;
+}
+
+#docConfirm:hover,
+#beautyConfirm:hover,
+#nightConfirm:hover {
+	cursor: pointer;
+	opacity: 0.9;
+}
